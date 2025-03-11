@@ -6,17 +6,17 @@ import { useRef } from "react";
 import { Carousel } from "react-bootstrap"; // Corrected import
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-
-
-
+import { lazy } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
-let image1 = require("../dessert.jpg");
-let image2 = require("../drinks.jpg");
-let image3 = require("../Home.jpg");
-let image4 = require("../pizza.jpg");
-let image5 = require("../shrimps.jpg");
-let image6 = require("../aperol.jpg");
+
+const image1 = lazy(() => import("../dessert.jpg"));
+const image2 = lazy(() => import("../drinks.jpg"));
+const image3 = lazy(() => import("../Home.jpg"));
+const image4 = lazy(() => import("../pizza.jpg"));
+const image5 = lazy(() => import("../shrimps.jpg"));
+const image6 = lazy(() => import("../aperol.jpg"));
+
 
 
 
