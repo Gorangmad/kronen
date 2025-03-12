@@ -13,3 +13,6 @@ spring:
               - OPTIONS
             allowedHeaders: "*"  # Allow all headers
             allowCredentials: true  # Allow credentials
+  data:
+    mongodb:
+      uri: ${MONGO_URI}

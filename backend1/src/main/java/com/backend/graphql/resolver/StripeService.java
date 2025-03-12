@@ -14,11 +14,9 @@ import org.springframework.beans.factory.annotation.Value;
 public class StripeService {
     private static final Logger logger = LoggerFactory.getLogger(StripeService.class);
 
-    @Value("${stripe.api.key}")
-    private String stripeApiKey;
 
     public StripeService() {
-        Stripe.apiKey = stripeApiKey;
+        Stripe.apiKey = "sk_test_51JlxjKIsIcjwovka9A1bd98rPcNPhsPb5EigmVUCRkvopovGq6fDTfYKhFfADyX2x0cPA3PYkIYqDUR11qzWOjr800QNTgN27m";
         logger.info("Stripe API Key set successfully");
     }
 
