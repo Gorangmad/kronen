@@ -18,15 +18,16 @@ const Footer = () => {
           <p>CONTACT</p>
         </div>
         <div className="col-md-4">
-          <p className="fw-bold">OPENING HOURS</p>
-          <p>Tuesday to Friday: 9am - 7pm</p>
-          <p>Saturday & Sunday: 10am - 7pm</p>
+          <p className="fw-bold">Öffnungszeiten</p>
+          <p>Montag bis Samstag: 16:00-22:00</p>
+          <p>Sonntag und Feiertage: 12:00-22:00</p>
+          <p>Dienstag Ruhetag</p>
         </div>
         <div className="col-md-4">
-          <p className="fw-bold">WHERE WE ARE</p>
-          <p>500 Terry Francine St, San Francisco</p>
-          <p>123-456-7890</p>
-          <p>info@mysite.com</p>
+          <p className="fw-bold">Wo sie uns finden?</p>
+          <p>Josefstraße 18, 63579 Freigericht</p>
+          <p>060559337531</p>
+          <p>info@KRONNENBRUNNEN.com</p>
         </div>
       </div>
       <div className="row text-center mt-4">
