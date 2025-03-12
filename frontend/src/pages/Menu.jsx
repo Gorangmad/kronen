@@ -17,7 +17,7 @@ const MenuPage = () => {
         if (!response.ok) {
           throw new Error("Fehler beim Abrufen der Speisekarte");
         }
-        console.log(response)
+        console.log(response.json())
         return response.json();
       })
       .then((data) => {
