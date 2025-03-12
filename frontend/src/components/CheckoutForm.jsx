@@ -31,7 +31,7 @@ const CheckoutForm = ({ totalAmount }) => {
 
     // Send paymentMethod.id and amount to backend
     try {
-      const response = await fetch("http://localhost:8080/stripe-payment", {
+      const response = await fetch("https://walrus-app-kygqi.ondigitalocean.app/apiS/stripe-payment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 

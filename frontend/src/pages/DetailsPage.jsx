@@ -60,7 +60,7 @@ const CheckoutForm = ({ totalAmount, formData, cart }) => {
       console.log("Payment Method Created:", paymentMethod.id);
 
       // 2. Send Payment Method ID to the Backend
-      const response = await fetch("http://localhost:8080/graphql", {
+      const response = await fetch("https://walrus-app-kygqi.ondigitalocean.app/api/graphql", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -118,7 +118,7 @@ const placeOrder = async () => {
       unitPrice: item.unitPrice
     }));
 
-    const orderResponse = await fetch("http://localhost:8080/graphql", {
+    const orderResponse = await fetch("https://walrus-app-kygqi.ondigitalocean.app/api/graphql", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

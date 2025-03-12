@@ -8,12 +8,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import org.springframework.beans.factory.annotation.Value;
+
 @Service
 public class StripeService {
     private static final Logger logger = LoggerFactory.getLogger(StripeService.class);
 
+    @Value("${stripe.api.key}")
+    private String stripeApiKey;
+
     public StripeService() {
-        Stripe.apiKey = "API_KEY";
+        Stripe.apiKey = stripeApiKey;
         logger.info("Stripe API Key set successfully");
     }
 
