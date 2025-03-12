@@ -21,8 +21,8 @@ public class JsonFileUtil {
     private static final String BASE_PATH = "";
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-     public <T> List<T> readJsonFile(String fileName, TypeReference<List<T>> typeReference) throws IOException {
-        // Load the file from the classpath (inside the JAR)
+    public <T> List<T> readJsonFile(String fileName, TypeReference<List<T>> typeReference) throws IOException {
+        // Load from classpath (inside the JAR)
         ClassPathResource resource = new ClassPathResource("data/" + fileName);
 
         if (!resource.exists()) {
@@ -35,7 +35,7 @@ public class JsonFileUtil {
             // Read JSON as generic map
             var rootNode = objectMapper.readTree(reader);
 
-            // If the JSON has a "menu" structure, extract products
+            // If JSON has a "menu" structure, extract products
             if (rootNode.has("menu")) {
                 var menuNode = rootNode.get("menu");
                 List<T> allProducts = new ArrayList<>();
