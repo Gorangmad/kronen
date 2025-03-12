@@ -12,7 +12,7 @@ const MenuPage = () => {
 
   // Produkte von der API abrufen
   useEffect(() => {
-    fetch("http://localhost:8080/products-data")
+    fetch("https://walrus-app-kygqi.ondigitalocean.app/api/products-data")
     .then((response) => {
         if (!response.ok) {
           throw new Error("Fehler beim Abrufen der Speisekarte");
