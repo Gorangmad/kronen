@@ -4,10 +4,15 @@ package com.backend.dataservice.util;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,37 +21,42 @@ public class JsonFileUtil {
     private static final String BASE_PATH = "";
     private final ObjectMapper objectMapper = new ObjectMapper();
 
- public <T> List<T> readJsonFile(String fileName, TypeReference<List<T>> typeReference) throws IOException {
-    File file = new File(BASE_PATH + fileName);
-    if (!file.exists()) {
-        throw new IOException("File not found: " + file.getAbsolutePath());
-    }
+     public <T> List<T> readJsonFile(String fileName, TypeReference<List<T>> typeReference) throws IOException {
+        // Load the file from the classpath (inside the JAR)
+        ClassPathResource resource = new ClassPathResource("data/" + fileName);
 
-    
-    // JSON als generelles Map-Objekt lesen
-    var rootNode = objectMapper.readTree(file);
+        if (!resource.exists()) {
+            throw new IOException("File not found in classpath: " + fileName);
+        }
 
-    // Falls die Datei eine "menu"-Struktur hat, extrahiere die Produkte
-    if (rootNode.has("menu")) {
-        var menuNode = rootNode.get("menu");
-        List<T> allProducts = new ArrayList<>();
+        try (InputStream inputStream = resource.getInputStream();
+             InputStreamReader reader = new InputStreamReader(inputStream, StandardCharsets.UTF_8)) {
 
-        // Iteriere durch alle Kategorien in "menu"
-        menuNode.fields().forEachRemaining(entry -> {
-            try {
-                List<T> products = objectMapper.readValue(entry.getValue().toString(), typeReference);
-                allProducts.addAll(products);
-            } catch (IOException e) {
-                throw new RuntimeException("Error parsing category: " + entry.getKey(), e);
+            // Read JSON as generic map
+            var rootNode = objectMapper.readTree(reader);
+
+            // If the JSON has a "menu" structure, extract products
+            if (rootNode.has("menu")) {
+                var menuNode = rootNode.get("menu");
+                List<T> allProducts = new ArrayList<>();
+
+                // Iterate through categories inside "menu"
+                menuNode.fields().forEachRemaining(entry -> {
+                    try {
+                        List<T> products = objectMapper.readValue(entry.getValue().toString(), typeReference);
+                        allProducts.addAll(products);
+                    } catch (IOException e) {
+                        throw new RuntimeException("Error parsing category: " + entry.getKey(), e);
+                    }
+                });
+
+                return allProducts;
             }
-        });
 
-        return allProducts;
+            // If JSON is already a flat list, return as-is
+            return objectMapper.readValue(rootNode.toString(), typeReference);
+        }
     }
-
-    // Falls das JSON bereits eine flache Liste ist, einfach zurückgeben
-    return objectMapper.readValue(file, typeReference);
-}
 
 
 
