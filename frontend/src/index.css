@@ -51,8 +51,9 @@
 }
 
 .about-img {
-  min-height: 1000px;
   background: url("./about.jpg") no-repeat center center/cover;
+  min-height: '300px';
+  height: '100%';
 }
 
 .order-btn {
@@ -80,3 +81,186 @@
 .menu-box:hover {
   transform: scale(1.05);
 }
+
+.parallax-row {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+@media (max-width: 768px) {
+  .parallax-wrapper img {
+    width: 100px !important;
+    margin: 0 10px !important;
+  }
+
+  #quote-section h2 {
+    font-size: 2rem !important;
+    padding: 0 1rem;
+  }
+
+  #quote-section {
+    padding: 3rem 0;
+  }
+}
+
+
+@media (max-width: 768px) {
+  #quote-section {
+    min-height: auto !important;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    max-width: 768px;
+  }
+
+  #quote-section .parallax-wrapper {
+    gap: 2rem;
+    margin-bottom: 4rem !important;
+  }
+
+  #quote-section .parallax-wrapper img {
+    width: 150px !important;
+    margin: 0 !important;
+  }
+
+  #quote-section h2 {
+    font-size: 2.5rem !important;
+    padding: 0 1rem;
+  }
+}
+
+
+/* Desktop */
+.dining-main {
+  width: 55%;
+  z-index: 1;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.dining-top-left {
+  width: 20%;
+  z-index: 1;
+  top: -10%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+}
+
+.dining-bottom-right {
+  width: 45%;
+  z-index: 2;
+  top: 110%;
+  left: 68%;
+  transform: translate(-50%, -50%);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+  .dining-main {
+    width: 55%;
+    transform: translate(-50%, -50%) scale(0.95);
+  }
+
+
+  .dining-top-left {
+    width: 30%;
+    top: 10%;
+    left: 20%;
+    transform: translate(-50%, -50%) scale(0.80);
+  }
+
+  .dining-bottom-right {
+    width: 50%;
+    top: 95%;
+    left: 80%;
+    transform: translate(-50%, -50%) scale(0.80);
+
+  }
+
+  .dining-text h2 {
+    font-size: 2.5rem !important;
+  }
+
+  .dining-text p {
+    font-size: 1rem !important;
+    width: 90% !important;
+  }
+
+  .dining-text a {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+
+/* Default: Desktop (4 images per slide) */
+.img-fluid-carousel {
+  width: 20%;
+  height: 400px;
+  object-fit: cover;
+  margin: 0 10px;
+  transition: transform 0.3s ease;
+}
+
+/* Tablet: max 2–3 images per slide */
+@media (max-width: 992px) {
+  .img-fluid-carousel {
+    width: 28%;
+    height: 300px;
+    margin: 0 8px;
+  }
+}
+
+/* Small screens: 1–2 images per slide */
+@media (max-width: 768px) {
+  .img-fluid-carousel {
+    width: 100%;
+    max-height: 150px;
+    margin: 0 6px;
+  }
+}
+
+/* Very small screens: single image per row if needed */
+@media (max-width: 480px) {
+  .img-fluid-carousel {
+    width: 80%;
+    height: 200px;
+    margin: 0 auto 1rem auto;
+    display: block;
+  }
+
+  .carousel-item > div.d-flex {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    font-size: 0.9rem;
+  }
+
+  #footer-text {
+    font-size: 2.5rem !important;
+  }
+
+  .footer p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    font-size: 0.8rem;
+  }
+
+  #footer-text {
+    font-size: 2rem !important;
+  }
+
+  .footer p {
+    font-size: 0.85rem;
+  }
+}
+

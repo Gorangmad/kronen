@@ -37,92 +37,213 @@ const HeroSection = () => {
         <Navbar></Navbar>
         
         {/* Hero Content */}
-        <div className="hero-content text-center d-flex flex-column justify-content-center align-items-center">
-          <h1 className="display-1 fw-bold text-white text-uppercase hero-title" style={{ fontSize: "8rem" }}>KRONENBRUNNEN</h1>
-          <p className="text-white fs-3 fst-italic">Bar &bull; Restaurant &bull; Pizzeria</p>
-          <div className="hero-buttons mt-4">
-            <a href="/order" className="btn order-btn me-3">Order Online</a>
-            <a href="#contact" className="btn order-btn">Reservations</a>
-          </div>
-        </div>
+        {/* Hero Content */}
+<motion.div
+  className="hero-content text-center d-flex flex-column justify-content-center align-items-center px-3"
+  initial={{ opacity: 0, y: 50 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1 }}
+>
+  <motion.h1
+    className="text-white text-uppercase fw-bold hero-title"
+    style={{ fontSize: "clamp(2.5rem, 8vw, 8rem)" }}
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.3, duration: 1 }}
+  >
+    KRONENBRUNNEN
+  </motion.h1>
+
+  <motion.p
+    className="text-white fs-5 fs-md-3 fst-italic"
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.5, duration: 1 }}
+  >
+    Bar &bull; Restaurant &bull; Pizzeria
+  </motion.p>
+
+  <motion.div
+    className="hero-buttons me-3"
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.7, duration: 1 }}
+  >
+    <a href="/order" className="btn order-btn me-3">Order Online</a>
+    <a href="#contact" className="btn order-btn">Reservations</a>
+  </motion.div>
+</motion.div>
       </div>
       
       {/* Scrolling Bar (Outside Hero Container) */}
       <div className="container-fluid py-2" style={{ backgroundColor: "#4E342E" }}>
         <marquee className="text-white fw-bold">
-          Exclusive Offers &nbsp; | &nbsp; Happy Hour Specials &nbsp; | &nbsp; Musik &nbsp; | &nbsp; Book Your Table Now
+          Exclusive Offers &nbsp; | &nbsp; Happy Hour Specials &nbsp; | &nbsp; Musik &nbsp; | &nbsp; Book Your Table Now | &nbsp; Holzofenpizza | &nbsp; Italienische Pasta | &nbsp; Hausgemachte Desserts | &nbsp; Frische Zutaten | &nbsp; Jetzt Tisch reservieren | &nbsp; Familienfreundlich | &nbsp; Lieferung & Abholung
         </marquee>
       </div>
 
       {/* About Section */}
       <section className="container py-5 mt-5" id="about">
         <div className="row align-items-center">
-          <div className="col-lg-6">
-            <h2 className="fw-bold text-dark about-title" style={{ fontSize: "6rem", fontFamily: "Times New Roman, serif" }}>ABOUT US</h2>
-            <p className="text-muted fs-5">
-              This is the space to introduce visitors to the business or brand. Briefly explain who's behind it, what it does,
-              and what makes it unique. Share its core values and what this site has to offer. Define the qualities and values that make it unique.
-            </p>
+          <div className="col-12 col-lg-6">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="fw-bold text-dark mb-4"
+                  style={{ fontSize: "clamp(2.5rem, 6vw, 6rem)", fontFamily: "Times New Roman, serif" }}>
+                ÜBER UNS
+              </h2>
+              <p className="text-muted fs-6 fs-md-5 text-start">
+                Willkommen bei Kronenbrunnen – Ihrer Adresse für traditionelle Küche mit moderner Note.
+                Unsere Leidenschaft für Qualität und Gastfreundschaft spiegelt sich in jedem Gericht wider.
+                Wir verbinden familiäre Atmosphäre mit kulinarischer Vielfalt: Pizza aus dem Holzofen, hausgemachte Desserts
+                und italienische Klassiker erwarten Sie. Erleben Sie Genuss mit Herz.
+              </p>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Menu Section */}
-      <section className="container-fluid d-flex align-items-center" style={{ backgroundColor: "#3E2723"}}>
-        <div className="row w-100 d-flex align-items-center" style={{ minHeight: "700px" }}>
-          <div className="about-img col-lg-6"></div>
-          <div className="col-lg-6 text-center d-flex flex-column justify-content-center align-items-center">
-            <h2 className="fw-bold text-white" style={{ fontSize: "6rem", fontFamily: "Times New Roman, serif" }}>OUR MENU</h2>
-            <p className="text-white fs-5 w-75 align-center">
-              This is the space to introduce the restaurant’s menu. Briefly describe the types of dishes and beverages offered and highlight any special features. Encourage site visitors to view the whole menu by exploring the menu page.
-            </p>
-            <a href="#menu" className="btn btn-outline-light px-4 py-2">VIEW MENU</a>
+      <section className="container-fluid d-flex align-items-center" style={{ backgroundColor: "#3E2723" }}>
+        <div className="row w-200 align-items-center" style={{ minHeight: "740px" }}>
+          
+          {/* Left Image Section (kann mit Background oder Bild ergänzt werden) */}
+          <div className="about-img col-12 col-lg-6" style={{ minHeight: "960px", minWidth: "520px" }}>
+            {/* Optional: Background-Image hier einfügen */}
+          </div>
+      
+          {/* Right Text Section */}
+          <div className="col-12 col-lg-6 d-flex flex-column justify-content-center align-items-start px-4 px-md-5 py-5">
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="fw-bold text-white mb-4"
+                  style={{ fontSize: "clamp(2.5rem, 6vw, 6rem)", fontFamily: "Times New Roman, serif" }}>
+                UNSERE KARTE
+              </h2>
+      
+              <p className="text-white fs-6 fs-md-5 mb-4" style={{ maxWidth: "600px" }}>
+                Entdecken Sie unsere Vielfalt: Von klassischen Pizzen aus dem Steinofen bis zu frischen Pasta-Gerichten
+                und hausgemachten Desserts – hier ist für jeden Geschmack etwas dabei. Lassen Sie sich inspirieren.
+              </p>
+      
+              <a href="#menu" className="btn btn-outline-light px-4 py-2 fw-bold">
+                ZUR SPEISEKARTE
+              </a>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </section> 
 
-        {/* Quote Section with More Spacing */}
-      <section className="container py-7 text-center position-relative d-flex flex-column justify-content-center align-items-center" id="quote-section" style={{ minHeight: "1500px", position: "relative" }}>
-        <div className="d-flex justify-content-between align-items-center w-100" style={{ marginBottom: "200px" }}>
-          <ParallaxImage src={image6} speed={100} width="180px" margin="0 50px" />
-          <ParallaxImage src={image2} speed={80} width="240px" margin="0 250px" />
-          <ParallaxImage src={image1} speed={200} width="210px" margin="0 150px" />
-        </div>
-        
-        <motion.div initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 1 }} className="mt-5">
-          <h2 className="fw-bold text-dark" style={{ fontSize: "8rem", fontFamily: "Playfair Display, serif", fontStyle: "italic" }}>
-            "The perfect place for any occasion"
-          </h2>
-        </motion.div>
-        
-        <div className="d-flex justify-content-between align-items-center w-100 mt-5" style={{ marginTop: "200px" }}>
-          <ParallaxImage src={image4} speed={-200} width="220px" margin="0 80px" />
-          <ParallaxImage src={image5} speed={-120} width="260px" margin="0 120px" />
-          <ParallaxImage src={image3} speed={-90} width="300px" margin="0 80px" />
-        </div>
-      </section>
+{/* Quote Section with More Spacing */}
+<section
+  className="container py-7 text-center position-relative d-flex flex-column justify-content-center align-items-center"
+  id="quote-section"
+  style={{ minHeight: "1500px", position: "relative" }}
+>
+  <div className="parallax-wrapper d-flex justify-content-between align-items-center w-100" style={{ marginBottom: "200px" }}>
+    <ParallaxImage src={image6} speed={150} width="180px" margin="0 20px" />
+    <ParallaxImage src={image2} speed={90} width="240px" margin="0 130px" />
+    <ParallaxImage src={image1} speed={150} width="210px" margin="0 120px" />
+  </div>
+
+  <motion.div
+    initial={{ y: 50, opacity: 0 }}
+    animate={{ y: 0, opacity: 1 }}
+    transition={{ duration: 1 }}
+    className="mt-5"
+  >
+    <h2
+      className="fw-bold text-dark"
+      style={{
+        fontSize: "8rem",
+        fontFamily: "Playfair Display, serif",
+        fontStyle: "italic",
+      }}
+    >
+      "The perfect place for any occasion"
+    </h2>
+  </motion.div>
+
+  <div className="parallax-wrapper d-flex justify-content-between align-items-center w-100 mt-5" style={{ marginTop: "200px" }}>
+    <ParallaxImage src={image4} speed={-30} width="220px" margin="0 80px" />
+    <ParallaxImage src={image5} speed={-120} width="260px" margin="0 120px" />
+    <ParallaxImage src={image3} speed={-200} width="300px" margin="0 80px" />
+  </div>
+</section>
+
 
       
-        {/* Dining Options Section with Centered Images */}
-        <section className="container-fluid d-flex align-items-center position-relative" style={{ backgroundColor: "#2D1B14", padding: "6rem 0" }}>
-        <div className="row w-100 d-flex align-items-center position-relative" style={{ minHeight: "700px" }}>
-          <div className="col-lg-6 text-white text-center d-flex flex-column justify-content-center align-items-center">
-            <h2 className="fw-bold text-white" style={{ fontSize: "6rem", fontFamily: "Times New Roman, serif" }}>DINING OPTIONS</h2>
-            <p className="text-white fs-5 w-75">
-              This is the space to introduce the Services section. Briefly describe the types of services offered and highlight any special benefits or features.
-            </p>
-            <a href="#order" className="btn btn-outline-light px-4 py-2">ORDER ONLINE</a>
+        {/* Dining Options Section for Italian Restaurant with Fade-in Animation */}
+        <section
+          className="container-fluid d-flex align-items-center position-relative"
+          style={{ backgroundColor: "#2D1B14", padding: "6rem 0" }}
+        >
+          <div
+            className="row w-100 d-flex align-items-center position-relative"
+            style={{ minHeight: "700px" }}
+          >
+            {/* Text Column */}
+            <motion.div
+              className="col-lg-6 text-white text-center d-flex flex-column justify-content-center align-items-center"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+            >
+              <h2
+                className="fw-bold text-white"
+                style={{ fontSize: "6rem", fontFamily: "Times New Roman, serif" }}
+              >
+                DINING OPTIONS
+              </h2>
+              <p className="text-white fs-5 w-75">
+                Experience the warmth of Italy in every bite. Whether you’re joining us
+                for a cozy dinner or celebrating with family and friends, our traditional
+                Italian dishes and rustic ambiance make every moment unforgettable.
+              </p>
+              <a href="#order" className="btn btn-outline-light px-4 py-2 mt-3">
+                ORDER ONLINE
+              </a>
+            </motion.div>
+        
+            {/* Image Column */}
+            <motion.div
+              className="col-lg-6 position-relative d-flex justify-content-center align-items-center"
+              style={{ height: "500px" }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 1 }}
+              viewport={{ once: true }}
+            >
+              <img
+                src={image1}
+                alt="Dining Video"
+                className="img-fluid position-absolute dining-main"
+              />
+              <img
+                src={image2}
+                alt="Dining Table"
+                className="img-fluid position-absolute dining-top-left"
+              />
+              <img
+                src={image3}
+                alt="Chef Cooking"
+                className="img-fluid position-absolute dining-bottom-right"
+              />
+            </motion.div>
           </div>
-          <div className="col-lg-6 position-relative d-flex justify-content-center align-items-center" style={{ height: "500px" }}>
-            <img src={image1} alt="Dining Video" className="img-fluid position-absolute" style={{ width: "55%", zIndex: 1, top: "45%", left: "50%", transform: "translate(-50%, -50%)" }} />
-            <img src={image2} alt="Dining Table" className="img-fluid position-absolute" style={{ width: "20%", zIndex: 1, top: "-10%", left: "20%", transform: "translate(-50%, -50%)" }} />
-            <img src={image3} alt="Chef Cooking" className="img-fluid position-absolute" style={{ width: "45%", zIndex: 2, top: "110%", left: "68%", transform: "translate(-50%, -50%)" }} />
-          </div>
-        </div>
-      </section>
+        </section>
 
-            {/* New Multi-Image Carousel Section */}
-            <section className="container-fluid d-flex align-items-center position-relative" style={{ padding: "4rem 0" }}>
+        {/* New Multi-Image Carousel Section */}
+        <section className="container-fluid d-flex align-items-center position-relative" style={{ padding: "4rem 0" }}>
         <div className="row w-100 d-flex align-items-center justify-content-center">
           <div className="col-12 d-flex justify-content-center align-items-center">
             <Carousel className="w-100" indicators={false} interval={3000} wrap={true}>
@@ -148,7 +269,7 @@ const HeroSection = () => {
       </section>
 
         {/* Reservation Section */}
-        <section id="contact" className="container text-center py-5 mb-2 " style={{ backgroundColor: "#3E2723", color: "white" , borderRadius: "25px"}}>
+        <section id="contact" className="container-fluid text-center py-5 mb-2 " style={{ backgroundColor: "#3E2723", color: "white" , borderRadius: "25px"}}>
         <h2 className="fw-bold" style={{ fontSize: "3rem" }}>Make a Reservation</h2>
         <p className="fs-5">Reserve a table in advance to enjoy a seamless dining experience.</p>
         {/* Google Maps Embed */}

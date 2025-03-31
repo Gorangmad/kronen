@@ -108,8 +108,6 @@ const placeOrder = async () => {
   try {
     console.log("Placing order...");
 
-    console.log(cart)
-
     // Prepare products array for GraphQL mutation
     const products = cart.map((item) => ({
       productId: item.productId,
@@ -141,7 +139,7 @@ const placeOrder = async () => {
         `,
         variables: {
           input: {
-            customerUsername: "testUser", // Keep this if your GraphQL schema requires it
+            customerUsername: formData.name, // Keep this if your GraphQL schema requires it
             email: formData.email,
             address: formData.address,
             phoneNumber: formData.phoneNumber,
@@ -152,23 +150,25 @@ const placeOrder = async () => {
       }),
     });
 
+    console.log(products)
+
     const orderJson = await orderResponse.json();
     console.log("Order Response:", orderJson);
 
     if (!orderJson.data || !orderJson.data.createOrder) {
-      throw new Error("Order placement failed.");
+      const errorMessage = orderJson.errors?.[0]?.message || "Order placement failed.";
+      throw new Error(errorMessage);
     }
-
     console.log("✅ Order placed successfully!");
 
     // ✅ Redirect to Success Page
-    setTimeout(() => {
-      window.location.href = "/success"; // Redirect after success
-    }, 2000);
+    // setTimeout(() => {
+    //   window.location.href = "/success"; // Redirect after success
+    // }, 2000);
 
   } catch (err) {
     setError("❌ Order placement failed. Please contact support.");
-    console.error("Order Error:", err);
+    console.error(err.response?.errors ?? err.message);
   } finally {
     setLoading(false);
   }
@@ -176,16 +176,6 @@ const placeOrder = async () => {
 
 
 
-
-
-// Loader Animation
-const Loader = () => (
-  <div className="loading-spinner">
-    <div className="spinner"></div>
-  </div>
-);
-
-  
 
   return (
     <div className="payment-form">

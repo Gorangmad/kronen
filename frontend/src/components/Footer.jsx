@@ -1,11 +1,12 @@
 import React from "react";
+import "../index.css"
 
 const Footer = () => {
   return (
-    <footer className="container-fluid text-white py-5" style={{ backgroundColor: "#4E342E" }}>
+    <footer className="container-fluid footer text-white py-5" style={{ backgroundColor: "#4E342E" }}>
       <div className="row text-center">
         <div className="col-12">
-          <h1 className="fw-bold" style={{ fontSize: "4rem", color: "#f8d7da" }}>KRONNENBRUNNEN</h1>
+          <h1 className="fw-bold" id="footer-text" style={{ fontSize: "4rem", color: "#f8d7da" }}>KRONNENBRUNNEN</h1>
           <p className="fst-italic" style={{ fontSize: "1.5rem" }}>Bar &bull; Restaurant &bull; Pizzeria</p>
         </div>
       </div>
