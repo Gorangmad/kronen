@@ -45,6 +45,8 @@ type Order {
   address: String
   phoneNumber: String
   notes: String
+  deliveryCost: Float
+  paymentMethod: String
 }
 
 type OrderProduct {
@@ -61,6 +63,8 @@ input OrderInput {
   phoneNumber: String # Optional
   notes: String # Optional
   products: [OrderProductInput!]!
+  deliveryCost: Float
+  paymentMethod: String 
 }
 
 input OrderProductInput {

@@ -10,6 +10,17 @@ public class OrderInput {
     private String phoneNumber; // Customer's phone number
     private String notes; // Additional notes about the order
     private List<ProductInput> products; // List of products in the order
+    private double deliveryCost; // Cost of delivery for the order
+    private String paymentMethod;
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+    
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
 
     // Getter and setter methods
     public String getCustomerUsername() {
@@ -67,4 +78,13 @@ public class OrderInput {
     public void setProducts(List<ProductInput> products) {
         this.products = products;
     }
+
+    public double getDeliveryCost() {
+        return deliveryCost;
+    }
+    
+    public void setDeliveryCost(double deliveryCost) {
+        this.deliveryCost = deliveryCost;
+    }
+    
 }

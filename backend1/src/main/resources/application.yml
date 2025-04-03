@@ -15,5 +15,6 @@ spring:
             allowCredentials: true  # Allow credentials
   data:
     mongodb:
-      uri: ${MONGO_URI}
+      uri: mongodb://localhost:27017/kronen
+      # uri: ${MONGO_URI}
 

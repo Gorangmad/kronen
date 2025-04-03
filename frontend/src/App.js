@@ -14,6 +14,7 @@ import DetailsPage from './pages/DetailsPage'; // Stripe payments are inside Det
 import UsersPage from './pages/UsersPage.jsx';
 import MenuPage from './pages/Menu.jsx';
 import OnlineOrdering from './pages/OrderPage.jsx';
+import SummaryPage from './pages/SummaryPage.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // ✅ Load Stripe with your **public key**
@@ -69,6 +70,7 @@ const App = () => {
 
           {/* ✅ Stripe Checkout is inside DetailsPage */}
           <Route path="/details" element={<DetailsPage tokenData={decodedToken} />} />
+          <Route path="/summary" element={<SummaryPage tokenData={decodedToken} />} />
 
           {/* Admin Routes (Require Admin Role) */}
           <Route path="/admin" element={<AdminRoute element={<AdminPage />} token={decodedToken} />} />

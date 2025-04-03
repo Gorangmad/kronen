@@ -3,6 +3,7 @@ import { jwtDecode } from "jwt-decode";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import orderImage from "../Home.jpg";
 import Navbar from "../components/Navbar";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = ({ totalAmount, formData, cart }) => {
   const stripe = useStripe();
@@ -193,6 +194,13 @@ const placeOrder = async () => {
 
 
 const DetailsPage = () => {
+  const navigate = useNavigate();
+
+  const handleNext = () => {
+    localStorage.setItem("checkoutFormData", JSON.stringify(formData));
+    navigate("/summary");
+  };
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -274,11 +282,7 @@ const DetailsPage = () => {
                   />
                 </div>
               ))}
-              <div className="d-flex gap-3">
-                <button type="button" className={`btn ${paymentMethod === "cash" ? "btn-dark" : "btn-outline-dark"}`} onClick={() => setPaymentMethod("cash")}>Cash</button>
-                <button type="button" className={`btn ${paymentMethod === "card" ? "btn-dark" : "btn-outline-dark"}`} onClick={() => setPaymentMethod("card")}>Card</button>
-              </div>
-              {paymentMethod === "card" && <CheckoutForm totalAmount={totalAmount} formData={formData} cart={cart} />}
+
             </form>
           </div>
 
@@ -299,6 +303,10 @@ const DetailsPage = () => {
               </div>
             )}
           </div>
+                        {/* Deine Form */}
+                        <button onClick={handleNext} className="btn btn-dark w-100 mt-3">
+                Weiter zur Bestellübersicht
+              </button>
         </div>
       </div>
 

@@ -16,6 +16,18 @@ public class Order {
     private String address; // Delivery address of the order
     private String phoneNumber; // Customer's phone number
     private String notes; // Additional notes about the order
+    private double deliveryCost; // Cost of delivery for the order
+    private String paymentMethod; // "CASH" oder "CARD"
+
+public String getPaymentMethod() {
+    return paymentMethod;
+}
+
+public void setPaymentMethod(String paymentMethod) {
+    this.paymentMethod = paymentMethod;
+}
+
+
 
     // Default constructor
     public Order() {
@@ -24,7 +36,7 @@ public class Order {
     // Parameterized constructor
     public Order(String id, String customerUsername, List<OrderProduct> products, float totalAmount,
                  String status, String createdAt, String companyName, String email,
-                 String address, String phoneNumber, String notes) {
+                 String address, String phoneNumber, String notes, Double deliveryCost, String paymentMethod) {
         this.id = id;
         this.customerUsername = customerUsername;
         this.products = products;
@@ -36,6 +48,8 @@ public class Order {
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.notes = notes;
+        this.deliveryCost = deliveryCost;
+        this.paymentMethod = paymentMethod;
     }
 
     // Getter and setter methods
@@ -127,6 +141,15 @@ public class Order {
         this.notes = notes;
     }
 
+    public Double getDeliveryCost() {
+        return deliveryCost;
+    }
+
+    public void setDeliveryCost(Double deliveryCost) {
+        this.deliveryCost = deliveryCost;
+    }
+
+
     // toString method for debugging purposes
     @Override
     public String toString() {
@@ -141,6 +164,7 @@ public class Order {
                 ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
+                ", deliveryCost='" + deliveryCost + '\'' +
                 ", notes='" + notes + '\'' +
                 '}';
     }
