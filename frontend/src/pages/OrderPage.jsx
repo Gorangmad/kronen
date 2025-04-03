@@ -14,7 +14,7 @@ const OnlineOrdering = () => {
   const [selectedSizes, setSelectedSizes] = useState({});
 
   useEffect(() => {
-    fetch("https://walrus-app-kygqi.ondigitalocean.app/api/api/products-data")
+    fetch("https://walrus-app-kygqi.ondigitalocean.app/api/products-data")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Fehler beim Abrufen der Daten");
