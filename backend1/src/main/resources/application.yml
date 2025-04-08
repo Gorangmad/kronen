@@ -15,5 +15,4 @@ spring:
             allowCredentials: true  # Allow credentials
   data:
     mongodb:
-      uri: mongodb+srv://doapps-8228c598-bbfb-49e7-9a0f-5552620ad085:2658kXKF7GtD309M@db-mongodb-fra1-68366-638f76d0.mongo.ondigitalocean.com/kronen?tls=true&authSource=admin&replicaSet=db-mongodb-fra1-68366
-
+      uri: mongodb+srv://doadmin:2658kXKF7GtD309M@db-mongodb-fra1-68366-638f76d0.mongo.ondigitalocean.com/kronen?tls=true&authSource=admin
