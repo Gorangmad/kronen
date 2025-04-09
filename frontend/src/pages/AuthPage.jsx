@@ -27,8 +27,8 @@ const AuthPage = () => {
     setError('');
 
     const endpoint = isLogin
-      ? 'http://localhost:8080/auth/login' // API endpoint for login
-      : 'http://localhost:8080/auth/register'; // API endpoint for registration
+      ? 'https://walrus-app-kygqi.ondigitalocean.app/api/auth/login' // API endpoint for login
+      : 'https://walrus-app-kygqi.ondigitalocean.app/api/auth/register'; // API endpoint for registration
 
     try {
       const response = await fetch(endpoint, {

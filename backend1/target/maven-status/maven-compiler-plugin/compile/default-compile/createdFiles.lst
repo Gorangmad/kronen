@@ -10,6 +10,7 @@ com\backend\graphql\resolver\StripeService.class
 com\backend\user\util\UserDataUtil.class
 com\backend\graphql\util\OrderDataUtil.class
 com\backend\WebSocketConfig.class
+com\backend\email\MailService.class
 com\backend\graphql\resolver\OrderResolver.class
 com\backend\model\User.class
 com\backend\dataservice\controller\controller\UserController$3.class

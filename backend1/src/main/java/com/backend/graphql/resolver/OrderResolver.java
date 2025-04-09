@@ -6,6 +6,7 @@ import com.backend.model.OrderProduct;
 import com.backend.graphql.util.OrderDataUtil;
 import com.backend.graphql.util.ProductServiceUtil;
 import com.backend.OrderWebSocketHandler;
+import com.backend.email.MailService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.springframework.graphql.data.method.annotation.Argument;
@@ -25,13 +26,17 @@ public class OrderResolver {
     private final OrderDataUtil orderDataUtil;
     private final ProductServiceUtil productServiceUtil;
     private final OrderWebSocketHandler webSocketHandler;
+    private final MailService mailService;
+
 
     public OrderResolver(OrderDataUtil orderDataUtil,
                          ProductServiceUtil productServiceUtil,
-                         OrderWebSocketHandler webSocketHandler) {
+                         OrderWebSocketHandler webSocketHandler,
+                         MailService mailService) {
         this.orderDataUtil = orderDataUtil;
         this.productServiceUtil = productServiceUtil;
         this.webSocketHandler = webSocketHandler;
+        this.mailService = mailService;
     }
 
     // Query to retrieve orders by customerUsername
@@ -93,6 +98,15 @@ public class OrderResolver {
         String orderJson = mapper.writeValueAsString(newOrder);
         webSocketHandler.sendOrderUpdate(orderJson);
 
+        // E-Mail-Versand
+        String customerSubject = "Ihre Bestellung bei " + newOrder.getCompanyName();
+        String ownerSubject = "Neue Bestellung von " + newOrder.getCustomerUsername();
+        
+        String emailContent = buildOrderEmailContent(newOrder);
+        
+        mailService.sendEmail(newOrder.getEmail(), customerSubject, emailContent);
+        mailService.sendEmail("info@kronenbrunnen.de", ownerSubject, emailContent); // Besitzer-Adresse anpassen
+
         return newOrder;
     }
 
@@ -123,4 +137,27 @@ public class OrderResolver {
                 .mapToDouble(product -> product.getQuantity() * (product.getUnitPrice() != null ? product.getUnitPrice() : 0))
                 .sum();
     }
+
+    private String buildOrderEmailContent(Order order) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("<h2>Bestellung von: ").append(order.getCustomerUsername()).append("</h2>");
+        sb.append("<p><b>Bestell-ID:</b> ").append(order.getId()).append("</p>");
+        sb.append("<p><b>Gesamtbetrag:</b> ").append(order.getTotalAmount()).append(" €</p>");
+        sb.append("<p><b>Lieferadresse:</b> ").append(order.getAddress()).append("</p>");
+        sb.append("<p><b>Zahlungsmethode:</b> ").append(order.getPaymentMethod()).append("</p>");
+        sb.append("<h3>Produkte:</h3><ul>");
+    
+        for (OrderProduct product : order.getProducts()) {
+            sb.append("<li>")
+              .append(product.getName())
+              .append(" (x").append(product.getQuantity()).append(") - ")
+              .append(product.getUnitPrice()).append(" €/Stück")
+              .append("</li>");
+        }
+    
+        sb.append("</ul>");
+        sb.append("<p><b>Notizen:</b> ").append(order.getNotes() != null ? order.getNotes() : "-").append("</p>");
+        return sb.toString();
+    }
+    
 }
