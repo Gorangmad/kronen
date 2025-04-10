@@ -16,7 +16,7 @@ public class StripeService {
 
 
     public StripeService() {
-        Stripe.apiKey = "sk_test_51JlxjKIsIcjwovka9A1bd98rPcNPhsPb5EigmVUCRkvopovGq6fDTfYKhFfADyX2x0cPA3PYkIYqDUR11qzWOjr800QNTgN27m";
+        Stripe.apiKey = ${stripeApiKey};
         logger.info("Stripe API Key set successfully");
     }
 
