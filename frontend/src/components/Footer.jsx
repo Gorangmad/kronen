@@ -33,7 +33,7 @@ const Footer = () => {
       </div>
       <div className="row text-center mt-4">
         <div className="col-12">
-          <p>Terms & Conditions &bull; Refund Policy &bull; Privacy Policy &bull; Accessibility Statement</p>
+          <p><a href="/Datenschutzerklaerung">Datenschutzerklaerung</a> &bull; <a href="/AGB">AGB</a> &bull; <a href="/Impressum">Impressum</a></p>
         </div>
       </div>
     </footer>
