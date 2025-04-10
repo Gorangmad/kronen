@@ -13,6 +13,9 @@ import InventoryPage from './pages/Inventory.jsx';
 import DetailsPage from './pages/DetailsPage'; // Stripe payments are inside DetailsPage
 import UsersPage from './pages/UsersPage.jsx';
 import MenuPage from './pages/Menu.jsx';
+import Datenschutzerklaerung from './pages/DS.jsx';
+import Impressum from './pages/Impressum.jsx';
+import AGB from './pages/AGB.jsx';
 import OnlineOrdering from './pages/OrderPage.jsx';
 import SummaryPage from './pages/SummaryPage.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -78,6 +81,10 @@ const App = () => {
           <Route path="/admin-products" element={<AdminRoute element={<ProductPage />} token={decodedToken} />} />
           <Route path="/admin-inventory" element={<AdminRoute element={<InventoryPage />} token={decodedToken} />} />
           <Route path="/admin-users" element={<AdminRoute element={<UsersPage />} token={decodedToken} />} />
+
+          <Route path="/Impressum" element={<Impressum/>} />
+          <Route path="/Datenschutzerklaerung" element={<Datenschutzerklaerung/>} />
+          <Route path="/AGB" element={<AGB/>} />
 
           {/* 404 Page */}
           <Route path="*" element={<Navigate to="/" />} />
