@@ -112,7 +112,7 @@ const HeroSection = () => {
         <div className="row w-200 align-items-center" style={{ minHeight: "740px" }}>
           
           {/* Left Image Section (kann mit Background oder Bild ergänzt werden) */}
-          <div className="about-img col-12 col-lg-6" style={{ minHeight: "960px", minWidth: "520px" }}>
+          <div className="about-img col-12 col-lg-6" style={{ minHeight: "960px", minWidth: "320px" }}>
             {/* Optional: Background-Image hier einfügen */}
           </div>
       
@@ -163,13 +163,15 @@ const HeroSection = () => {
     <h2
       className="fw-bold text-dark"
       style={{
-        fontSize: "8rem",
+        fontSize: "clamp(2.5rem, 8vw, 8rem)",
         fontFamily: "Playfair Display, serif",
         fontStyle: "italic",
+        padding: "0 1rem",
       }}
     >
-      "The perfect place for any occasion"
+    "Der perfekte Ort für jeden Anlass"
     </h2>
+
   </motion.div>
 
   <div className="parallax-wrapper d-flex justify-content-between align-items-center w-100 mt-5" style={{ marginTop: "200px" }}>
@@ -199,8 +201,7 @@ const HeroSection = () => {
               viewport={{ once: true }}
             >
               <h2
-                className="fw-bold text-white"
-                style={{ fontSize: "6rem", fontFamily: "Times New Roman, serif" }}
+                className="fw-bold text-white dining-text"
               >
                 DINING OPTIONS
               </h2>

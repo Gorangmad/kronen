@@ -165,21 +165,20 @@
 
   .dining-top-left {
     width: 30%;
-    top: 10%;
+    top: 20%;
     left: 20%;
     transform: translate(-50%, -50%) scale(0.80);
   }
 
   .dining-bottom-right {
     width: 50%;
-    top: 95%;
+    top: 85%;
     left: 80%;
     transform: translate(-50%, -50%) scale(0.80);
-
   }
 
-  .dining-text h2 {
-    font-size: 2.5rem !important;
+  .dining-text .dining-text {
+    font-size: 3.5rem ;
   }
 
   .dining-text p {
@@ -263,4 +262,112 @@
     font-size: 0.85rem;
   }
 }
+
+@media (max-width: 992px) {
+  .hero-title {
+    font-size: 3rem !important;
+  }
+
+  .hero-content p {
+    font-size: 1.25rem !important;
+  }
+
+  .hero-buttons .order-btn {
+    font-size: 1rem;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem !important;
+  }
+
+  .hero-content p {
+    font-size: 1rem !important;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .hero-buttons .order-btn {
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+  }
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  #quote-section h2 {
+    font-size: clamp(2rem, 6vw, 4.5rem);
+  }
+
+  #quote-section .parallax-wrapper {
+    flex-wrap: wrap;
+    justify-content: center !important;
+    gap: 2rem;
+  }
+
+  #quote-section .parallax-wrapper img {
+    width: 160px !important;
+    margin: 0 20px !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  #quote-section {
+    padding: 2rem 1rem !important;
+  }
+
+  #quote-section h2 {
+    font-size: clamp(1.5rem, 5vw, 3rem) !important;
+    padding: 0 1rem;
+  }
+
+  #quote-section .parallax-wrapper {
+    gap: 2rem;
+    margin-bottom: 2rem !important;
+    margin-top: 2rem !important;
+    flex-wrap: wrap;
+    justify-content: center !important;
+  }
+
+  #quote-section .parallax-wrapper img {
+    width: 120px !important;
+    margin: 0 10px !important;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  #quote-section h2 {
+    font-size: 1.8rem !important;
+    line-height: 1.4;
+  }
+
+  #quote-section .parallax-wrapper img {
+    width: 90px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .container h1 {
+    font-size: 2rem !important;
+  }
+
+  .container h3 {
+    font-size: 1.25rem !important;
+  }
+
+  .btn {
+    font-size: 1rem !important;
+    padding: 0.75rem 1rem !important;
+  }
+}
+
+
 
