@@ -70,7 +70,8 @@ public class OrderResolver {
                         productInput.getProductId(),
                         productInput.getName(),
                         productInput.getQuantity(),
-                        productInput.getUnitPrice()
+                        productInput.getUnitPrice(),
+                        productInput.getSelectedSize() // ← Include this!
                 ))
                 .collect(Collectors.toList());
 
@@ -149,10 +150,16 @@ public class OrderResolver {
     
         for (OrderProduct product : order.getProducts()) {
             sb.append("<li>")
-              .append(product.getName())
-              .append(" (x").append(product.getQuantity()).append(") - ")
+              .append(product.getName());
+            
+            if (product.getSelectedSize() != null) {
+                sb.append(" (").append(product.getSelectedSize()).append(")");
+            }
+            
+            sb.append(" (x").append(product.getQuantity()).append(") - ")
               .append(product.getUnitPrice()).append(" €/Stück")
               .append("</li>");
+
         }
     
         sb.append("</ul>");

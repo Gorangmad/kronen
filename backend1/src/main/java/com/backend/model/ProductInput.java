@@ -5,6 +5,8 @@ public class ProductInput {
     private int quantity; // Quantity of the product ordered
     private double unitPrice; // Price per unit of the product
     private String name; // Name of the product
+    private String selectedSize;
+
 
     // Getters
     public String getProductId() {
@@ -15,6 +17,15 @@ public class ProductInput {
         return name;
     }
 
+    public String getSelectedSize() {
+        return selectedSize;
+    }
+    
+    public void setSelectedSize(String selectedSize) {
+        this.selectedSize = selectedSize;
+    }
+
+    
     public double getUnitPrice() {
         return unitPrice;
     }
