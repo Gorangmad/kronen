@@ -54,6 +54,7 @@ type OrderProduct {
   name: String
   quantity: Int!
   unitPrice: Float!
+    selectedSize: String
 }
 
 input OrderInput {
