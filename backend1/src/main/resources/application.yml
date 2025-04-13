@@ -31,7 +31,3 @@ spring:
           starttls:
             enable: true
     default-encoding: UTF-8
-
-stripe:
-  api:
-    key: {stripeApiKey}

@@ -144,6 +144,13 @@
         <optional>true</optional>
     </dependency>
 
+    <!-- Für Maven -->
+    <dependency>
+        <groupId>jakarta.annotation</groupId>
+        <artifactId>jakarta.annotation-api</artifactId>
+    </dependency>
+
+
     <!-- ✅ Spring Boot Starter Test (For Unit Testing) -->
     <dependency>
         <groupId>org.springframework.boot</groupId>
