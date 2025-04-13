@@ -300,16 +300,39 @@ const SummaryPage = () => {
           <div className="card p-3 border rounded mt-3">
             <CardElement className="form-control" />
           </div>
-          <button onClick={handlePayment} disabled={loading} className="btn btn-brown w-100 mt-3">
-            {loading ? "Zahlung läuft..." : `Jetzt €${totalAmount.toFixed(2)} bezahlen`}
-          </button>
+          <div className="position-relative mt-3">
+            <button
+              onClick={handlePayment}
+              disabled={loading}
+              className="btn btn-brown w-100"
+            >
+              {loading ? "Zahlung läuft..." : `Jetzt €${totalAmount.toFixed(2)} bezahlen`}
+            </button>
+            {loading && (
+              <div className="loading-overlay d-flex justify-content-center align-items-center">
+                <div className="spinner-border text-light" role="status"></div>
+              </div>
+            )}
+          </div>
         </>
       )}
 
       {paymentMethod === "cash" && (
-        <button className="btn btn-success w-100" onClick={placeOrder}>
+        <div className="position-relative">
+        <button
+          className="btn btn-success w-100"
+          onClick={placeOrder}
+          disabled={loading}
+        >
           Bestellung abschließen (Barzahlung)
         </button>
+        {loading && (
+          <div className="loading-overlay d-flex justify-content-center align-items-center">
+            <div className="spinner-border text-light" role="status"></div>
+          </div>
+        )}
+      </div>
+      
       )}
 
       {error && <p className="text-danger mt-3">{error}</p>}

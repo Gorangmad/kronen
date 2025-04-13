@@ -114,7 +114,8 @@ const placeOrder = async () => {
       productId: item.productId,
       quantity: item.quantity,
       name: item.name,
-      unitPrice: item.unitPrice
+      unitPrice: item.unitPrice,
+      selectedSize: item.selectedSize,
     }));
 
     const orderResponse = await fetch("https://walrus-app-kygqi.ondigitalocean.app/api/graphql", {
@@ -134,6 +135,7 @@ const placeOrder = async () => {
               name
               quantity
               unitPrice
+              selectedSize
             }
           }
         }

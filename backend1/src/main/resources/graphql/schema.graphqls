@@ -72,6 +72,7 @@ input OrderProductInput {
   quantity: Int!
   name: String # Optional
   unitPrice: Float # Optional
+  selectedSize: String
 }
 
 
