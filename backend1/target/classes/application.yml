@@ -4,7 +4,7 @@ spring:
       globalcors:  # Global CORS configuration
         corsConfigurations:
           '[/**]': 
-            allowedOrigins: "http://localhost:3000"  # Allow frontend requests
+            allowedOrigins: "https://kronenbrunnen.de"  # Allow frontend requests
             allowedMethods:  # Allowed HTTP methods
               - GET
               - POST
@@ -17,6 +17,7 @@ spring:
     mongodb:
       uri: mongodb+srv://doadmin:2658kXKF7GtD309M@db-mongodb-fra1-68366-638f76d0.mongo.ondigitalocean.com/kronen?tls=true&authSource=admin
     
+
   mail:
     host: mail.privateemail.com
     port: 587
@@ -30,3 +31,7 @@ spring:
           starttls:
             enable: true
     default-encoding: UTF-8
+
+stripe:
+  api:
+    key: {stripeApiKey}
