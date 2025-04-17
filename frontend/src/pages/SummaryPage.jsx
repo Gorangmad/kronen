@@ -210,6 +210,10 @@ const SummaryPage = () => {
   };
 
   const placeOrder = async () => {
+    setLoading(true);
+    setError("");
+    setSuccess("");
+
     try {
       const products = cart.map((item) => ({
         productId: String(item.productId),
@@ -239,7 +243,7 @@ const SummaryPage = () => {
               notes: formData.notes,
               deliveryCost,
               products,
-              paymentMethod: paymentMethod.toUpperCase()
+              paymentMethod: paymentMethod.toUpperCase(),
             },
           },
         }),
@@ -260,6 +264,8 @@ const SummaryPage = () => {
     } catch (err) {
       setError("Fehler bei der Bestellung.");
       console.error(err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -291,8 +297,8 @@ const SummaryPage = () => {
       </div>
 
       <div className="mb-3">
-        <button className={`btn ${paymentMethod === "cash" ? "btn-dark" : "btn-outline-dark"}`} onClick={() => setPaymentMethod("cash")}>Barzahlung</button>
-        <button className={`btn ms-2 ${paymentMethod === "card" ? "btn-dark" : "btn-outline-dark"}`} onClick={() => setPaymentMethod("card")}>Kartenzahlung</button>
+        <button className={`btn ${paymentMethod === "cash" ? "btn-dark" : "btn-outline-dark"}`} onClick={() => setPaymentMethod("cash")} disabled={loading}>Barzahlung</button>
+        <button className={`btn ms-2 ${paymentMethod === "card" ? "btn-dark" : "btn-outline-dark"}`} onClick={() => setPaymentMethod("card")} disabled={loading}>Kartenzahlung</button>
       </div>
 
       {paymentMethod === "card" && (
@@ -319,20 +325,19 @@ const SummaryPage = () => {
 
       {paymentMethod === "cash" && (
         <div className="position-relative">
-        <button
-          className="btn btn-success w-100"
-          onClick={placeOrder}
-          disabled={loading}
-        >
-          Bestellung abschließen (Barzahlung)
-        </button>
-        {loading && (
-          <div className="loading-overlay d-flex justify-content-center align-items-center">
-            <div className="spinner-border text-light" role="status"></div>
-          </div>
-        )}
-      </div>
-      
+          <button
+            className="btn btn-success w-100"
+            onClick={placeOrder}
+            disabled={loading}
+          >
+            Bestellung abschließen (Barzahlung)
+          </button>
+          {loading && (
+            <div className="loading-overlay d-flex justify-content-center align-items-center">
+              <div className="spinner-border text-light" role="status"></div>
+            </div>
+          )}
+        </div>
       )}
 
       {error && <p className="text-danger mt-3">{error}</p>}
