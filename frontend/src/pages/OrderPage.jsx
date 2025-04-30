@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../index.css";
 import Navbar from "../components/Navbar";
-import { FaCheckCircle, FaClock, FaMapMarkerAlt, FaShoppingCart, FaTrash } from "react-icons/fa";
+import { FaCheckCircle, FaShoppingCart } from "react-icons/fa";
 
 let orderingImage = require("../Home.jpg");
 
@@ -13,8 +13,11 @@ const OnlineOrdering = () => {
   const [error, setError] = useState(null);
   const [selectedSizes, setSelectedSizes] = useState({});
 
+  // Wochentag bestimmen (0 = Sonntag, 1 = Montag, ..., 6 = Samstag)
+  const today = new Date().getDay();
+
   useEffect(() => {
-    fetch("https://walrus-app-kygqi.ondigitalocean.app/api/products-data")
+    fetch("http://localhost:8080/products-data")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Fehler beim Abrufen der Daten");
@@ -80,16 +83,27 @@ const OnlineOrdering = () => {
     }
   };
 
-  const removeFromCart = (index) => {
-    setCart((prevCart) => prevCart.filter((_, i) => i !== index));
-  };
-
   const handleSizeChange = (productId, size) => {
     setSelectedSizes((prevSizes) => ({ ...prevSizes, [productId]: size }));
   };
 
-  const categorizeProducts = (start, end) =>
-    products.filter((product) => product.productId >= start && product.productId <= end);
+  const getProductsByCategory = (category) =>
+    products.filter((product) => product.category === category);
+
+  // Dynamische Kategorie-Reihenfolge (Angebote zuerst, wenn gültig)
+  const categories = [
+    ...(today === 3 ? ["Angebote Schnitzel"] : []),   // Mittwoch
+    ...(today === 4 ? ["Angebote Pizza"] : []),       // Donnerstag
+    "Vorspeisen",
+    "Salate",
+    "Pizza",
+    "Pasta",
+    "Burger",
+    "Desserts",
+    "Fisch",
+    "Schnitzel",
+    "Steaks",
+  ];
 
   return (
     <>
@@ -121,15 +135,8 @@ const OnlineOrdering = () => {
         <section className="container text-start py-5">
           <h1 className="fw-bold mt-5" style={{ fontSize: "5rem", color: "#4E342E" }}>Speisekarte</h1>
 
-          {[
-            { category: "Vorspeisen", range: [1, 5] },
-            { category: "Salate", range: [6, 12] },
-            { category: "Pizza", range: [13, 19] },
-            { category: "Pasta", range: [20, 23] },
-            { category: "Burger", range: [24, 26] },
-            { category: "Desserts", range: [27, 29] },
-          ].map(({ category, range }) => {
-            const categoryProducts = categorizeProducts(range[0], range[1]);
+          {categories.map((category) => {
+            const categoryProducts = getProductsByCategory(category);
             if (categoryProducts.length === 0) return null;
 
             return (
@@ -177,7 +184,6 @@ const OnlineOrdering = () => {
           })}
         </section>
       )}
-
     </>
   );
 };
