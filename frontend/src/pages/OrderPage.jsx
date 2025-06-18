@@ -17,7 +17,7 @@ const OnlineOrdering = () => {
   const today = new Date().getDay();
 
   useEffect(() => {
-    fetch("http://localhost:8080/products-data")
+    fetch("https://kronenbrunnen.de/api/products-data")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Fehler beim Abrufen der Daten");
