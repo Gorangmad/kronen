@@ -21,7 +21,7 @@ import SummaryPage from './pages/SummaryPage.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // ✅ Load Stripe with your **public key**
-const stripePromise = loadStripe("pk_test_51JlxjKIsIcjwovkaVR6ZmlU1la0EtSl3yONoKLyLOg5EN3uQAboOdkayMglCHtoGv8T7uqJo38Vwrz2WBwGxL3F3001vhfe8l5");
+const stripePromise = loadStripe("pk_live_51JlxjKIsIcjwovkaU3gjzwWDZ8MhZG40asakB1sp94gCxoqFEKC2huJOxcmMQOcXnVz2LTMdFgbipsvB3LT2a37M00qfdgkZho");
 
 // PrivateRoute 
 const PrivateRoute = ({ element, token }) => {
